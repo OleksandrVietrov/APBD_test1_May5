@@ -1,0 +1,31 @@
+@VendorsApi_HostAddress = http://localhost:5000
+
+###get all vendors
+GET {{VendorsApi_HostAddress}}/api/vendors
+Accept: application/json
+
+###Filter by name (LIKE %Tech%)
+GET {{VendorsApi_HostAddress}}/api/vendors?name=Tech
+Accept: application/json
+
+###create vendor with products
+POST {{VendorsApi_HostAddress}}/api/vendors
+Content-Type: application/json
+
+{
+  "code": "VEND000099",
+  "name": "Brand New Vendor",
+  "products": [
+    { "id": 1, "amount": 25, "pricePerUnit": 4100.00 },
+    { "id": 4, "amount": 80, "pricePerUnit": 95.00 }
+  ]
+}
+
+###create vendor without products
+POST {{VendorsApi_HostAddress}}/api/vendors
+Content-Type: application/json
+
+{
+  "code": "VEND000098",
+  "name": "Empty Vendor"
+}
